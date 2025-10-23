@@ -106,11 +106,14 @@ app = Flask('')
 def home():
     return "RRC Club Run Bot is online!"
 
-def run():
-  app.run(host='0.0.0.0', port=8080)
+def run_server():
+    # Render sets a PORT environment variable. We use 8080 as a fallback.
+    port = int(os.environ.get('PORT', 8080))
+    # CRITICAL: host="0.0.0.0" is needed to listen on the public network interface.
+    app.run(host="0.0.0.0", port=port)
 
 def keep_alive():
-  t = Thread(target=run)
+  t = Thread(target=run_server)
   t.start()
 
 #Run the Bot
