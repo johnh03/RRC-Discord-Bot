@@ -119,6 +119,8 @@ def keep_alive():
 #Run the Bot
 if __name__ == '__main__':
     try:
+        keep_alive()
+        
         bot.run(TOKEN)
     except discord.LoginFailure:
         print("FATAL ERROR: Bot failed to log in. Check your DISCORD_TOKEN in the .env file.")
